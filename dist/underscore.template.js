@@ -1,5 +1,5 @@
 /*
- * underscore.template 0.2.1
+ * underscore.template 0.2.2
  * Extracted template from Underscore, use '_.template' without full underscore source.
  * https://github.com/MattRh/underscore.template
  *
@@ -37,6 +37,7 @@ if (typeof define === 'function' && define.amd) {
         return Template;
     });
 } else if (typeof window !== 'undefined' || typeof navigator !== 'undefined') {
+    window._ = _;
     window.UnderscoreTemplate = Template;
 }
 
