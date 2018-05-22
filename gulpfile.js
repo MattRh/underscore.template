@@ -21,7 +21,20 @@ gulp.task('build', function() {
             ignore: ['fs', 'buffer']
         }))
         .pipe(uglify())
-        .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
+        .on('error', (err) => {
+            gutil.log(gutil.colors.red('[Error]'), err.toString());
+        })
+        .pipe(banner(comment, {
+            pkg: pkg,
+            present: (new Date()).getFullYear(),
+        }))
+        .pipe(rename('underscore.template.min.js'))
+        .pipe(gulp.dest('dist'));
+
+    gulp.src('lib/index.js')
+        .pipe(browserify({
+            ignore: ['fs', 'buffer']
+        }))
         .pipe(banner(comment, {
             pkg: pkg,
             present: (new Date()).getFullYear(),
