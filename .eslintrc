@@ -1,7 +1,7 @@
 {
     "parser": "espree",
     "parserOptions": {
-        "ecmaVersion": 6,
+        "ecmaVersion": 5,
         "sourceType": "module"
     },
     "env": {
@@ -57,13 +57,10 @@
             }
         ],
         "no-trailing-spaces": 2,
-        "no-new-func": 2,
+        "no-new-func": 0,
         "no-new-object": 2,
         "no-irregular-whitespace": 2,
-        "quotes": [
-            2,
-            "single"
-        ],
+        "quotes": 0,
         "strict": [
             2,
             "global"

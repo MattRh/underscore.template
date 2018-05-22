@@ -1,4 +1,5 @@
 ﻿const gulp = require('gulp');
+var gutil = require('gulp-util');
 const uglify = require('gulp-uglify');
 const browserify = require('gulp-browserify');
 const rename = require('gulp-rename');
@@ -20,6 +21,7 @@ gulp.task('build', function() {
             ignore: ['fs', 'buffer']
         }))
         .pipe(uglify())
+        .on('error', function (err) { gutil.log(gutil.colors.red('[Error]'), err.toString()); })
         .pipe(banner(comment, {
             pkg: pkg,
             present: (new Date()).getFullYear(),
