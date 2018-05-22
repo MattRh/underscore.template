@@ -1,16 +1,16 @@
-﻿var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var browserify = require('gulp-browserify');
-var rename = require("gulp-rename");
-var banner = require("gulp-banner");
-var pkg = require('./package.json');
+﻿const gulp = require('gulp');
+const uglify = require('gulp-uglify');
+const browserify = require('gulp-browserify');
+const rename = require('gulp-rename');
+const banner = require('gulp-banner');
+const pkg = require('./package.json');
 
-var comment = '/*\n' +
+const comment = '/*\n' +
     ' * <%= pkg.name %> <%= pkg.version %>\n' +
     ' * <%= pkg.description %>\n' +
     ' * <%= pkg.homepage %>\n' +
     ' *\n' +
-    ' * Copyright 2015-present, <%= pkg.author %>\n' +
+    ' * Copyright 2015-<%= present %>, <%= pkg.author %>\n' +
     ' * Released under the <%= pkg.license %> license.\n' +
     '*/\n\n';
 
@@ -21,7 +21,8 @@ gulp.task('build', function() {
         }))
         .pipe(uglify())
         .pipe(banner(comment, {
-            pkg: pkg
+            pkg: pkg,
+            present: (new Date()).getFullYear(),
         }))
         .pipe(rename('underscore.template.js'))
         .pipe(gulp.dest('dist'));
